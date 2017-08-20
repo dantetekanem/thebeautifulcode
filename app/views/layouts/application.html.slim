@@ -1,0 +1,42 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="description" content="Share, create and get help while improving the quality of your code."
+    meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    title The Beautiful Code
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
+    = stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons"
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body.mdl-demo.mdl-color--grey-100.mdl-color-text--grey-700.mdl-base
+    div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      header.mdl-layout__header.mdl-layout__header--scroll.mdl-color--primary
+        div.mdl-layout--large-screen-only.mdl-layout__header-row
+        div.mdl-layout--large-screen-only.mdl-layout__header-row
+          h2 The Beautiful Code
+        div.mdl-layout--large-screen-only.mdl-layout__header-row
+
+        div.mdl-layout__tab-bar.mdl-js-ripple-effect.mdl-color--primary-dark
+          = link_to "Home", root_path, class: "mdl-layout__tab is-active"
+          - unless user_signed_in?
+            = link_to "Featured", featured_path, class: "mdl-layout__tab"
+            = link_to "How It Works", how_it_works_path, class: "mdl-layout__tab"
+            = link_to "About", about_path, class: "mdl-layout__tab"
+            = link_to "Register", new_user_registration_path, class: "mdl-layout__tab"
+            = link_to "Login", new_user_session_path, class: "mdl-layout__tab"
+          - else
+            = link_to "Boards", "#", class: "mid-layout__tab", class: "mdl-layout__tab"
+            = link_to "Featured", "#", class: "mid-layout__tab", class: "mdl-layout__tab"
+            = link_to "My Codes", "#", class: "mid-layout__tab", class: "mdl-layout__tab"
+            = link_to "Configurations", "#", class: "mid-layout__tab", class: "mdl-layout__tab"
+            = link_to "Logout", destroy_user_session_path, method: :delete, class: "mdl-layout__tab"
+            button#add.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored.mdl-shadow--4dp.mdl-color--accent
+              i#add-icon.material-icons role="presentation" add
+              span.mdl-tooltip.mdl-tooltip--large for="add-icon" Add new code
+      main.mdl-layout__content
+        div#overview.mdl-layout__tab-panel.is-active
+          = yield

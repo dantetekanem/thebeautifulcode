@@ -1,0 +1,31 @@
+.mdl-typography--text-center
+  h1 List of featured codes shared by our community.
+  p The Beautiful Code is a code base for improving your own quality as a developer, while you share your knowledge and learn.
+section.section--center.mdl-grid.mdl-grid--no-spacing.mdl-shadow--2dp
+  .mdl-card.mdl-cell.mdl-cell--12-col
+    .mdl-card__supporting-text
+      h4 Bad Code
+      pre
+        code.ruby
+          | arr = [10, 20, 30, 40, 50]
+          br
+          | total = 0
+          br
+          | arr.each { |needle| total += needle }
+          br
+          | puts total
+          br
+          | # 150
+
+.mdl-typography--text-center
+  p The example above looks terrible, right? So why don't we refactor it and show to other developers better ways of coding?
+
+section.section--center.mdl-grid.mdl-grid--no-spacing.mdl-shadow--2dp
+  .mdl-card.mdl-cell.mdl-cell--12-col
+    .mdl-card__supporting-text
+      h4 Good Code
+      pre
+        code.ruby
+          | puts [10, 20, 30, 40, 50].inject(:+)
+          br
+          | # 150
